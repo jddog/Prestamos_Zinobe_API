@@ -6,13 +6,17 @@ Descargar npm y node js
 
 https://nodejs.org/en/
 Clonar proyecto
+
 Se debe ejecutar el siguiente comando estando en el directorio que se desee obetener el codigo
 git clone https://github.com/jddog/Prestamos_Zinobe_API.git
+
 Luego ingresar a la carpeta generada y ejecutar para instalar todas las dependencias
 npm install --save
+
 Lanzar Servidor
 Ejecutar en la linea de comandos a nivel donde se encuentra el proyecto
 npm run dev
+
 Metodos del servicio prestamos
 Para consultar todos los prestamos por estado, se debe enviar una peticion de tipo GET a la siguiente url enviando el estado a consultar: Aprobado - Rechazado
 Localhost:
