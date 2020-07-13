@@ -32,9 +32,7 @@ function registrarPrestamo(req, res) {
         .send(
           "Lo sentimos, anteriormente ya se le rechazo la solicitud de un prestamo"
         );
-    }
-
-    if (request.EstadoCredito === "Rechazado") {
+    } else if (request.EstadoCredito === "Rechazado") {
       usuario.usuarioRechazado = true;
 
       Usuario.findByIdAndUpdate(
