@@ -84,6 +84,7 @@ function obtenerPrestamosPorEstado(req, res) {
         let usuarioInformacion = usuarios.find(
           (f) => f.Cedula === prestamo.Cedula
         );
+        requestPrestamo._id = prestamo._id;
         requestPrestamo.Valor = prestamo.Valor;
         requestPrestamo.EstadoCredito = prestamo.EstadoCredito;
         requestPrestamo.CreditoPagado = prestamo.CreditoPagado;
@@ -116,9 +117,28 @@ function obtenerPrestamoPorPagarPorCedula(req, res) {
   });
 }
 
+function pagarPrestamo(req, res) {
+  let prestamo = req.body.prestamo;
+  prestamo.CreditoPagado = true;
+  Prestamo.findByIdAndUpdate(
+    prestamo._id,
+    prestamo,
+    (err, usuarioActualizado) => {
+      if (err) {
+        return res
+          .status(500)
+          .send("Ha ocurrido un error al actualizar el prestamo");
+      } else {
+        return res.status(200).send(true);
+      }
+    }
+  );
+}
+
 module.exports = {
   registrarPrestamo,
   obtenerPrestamosPorEstado,
   obtenerHistorialPrestamosPorCedula,
   obtenerPrestamoPorPagarPorCedula,
+  pagarPrestamo,
 };

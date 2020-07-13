@@ -30,4 +30,6 @@ router.get(
 
 router.post("/prestamos/registrarPrestamo", prestamosDAO.registrarPrestamo);
 
+router.post("/prestamos/pagarPrestamo", prestamosDAO.pagarPrestamo);
+
 module.exports = router;
